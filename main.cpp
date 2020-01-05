@@ -245,7 +245,7 @@ void RenderScene() {
 	glutSwapBuffers();
 }
 
-
+//this function is called every 25 milliseconds, here the rotation angles of the planet and the rings are modified, and the image is also updated.
 void TimerFunc(int value)
 {
 	AngleHoop += 1.0f;
@@ -258,6 +258,7 @@ void TimerFunc(int value)
 	glutTimerFunc(25,TimerFunc,0); // wait 25 ms
 }
 
+//Place the ship in the initial position and set the number of crystals collected to zero.
 void resetgame()
 {
 	Angle = Angle2 = 0.0f;
@@ -265,6 +266,8 @@ void resetgame()
 	collected = 0;
 }
 
+//This function is called every time the position of the ship changes. It is determined if the distance between the ship and the yellow crystal is less than a certain value. 
+//If that happens, then the crystal is collected. It also resets the game if all the crystals were collected.
 void testCollision()
 {
 	if (collected < numTorous)
@@ -279,6 +282,7 @@ void testCollision()
 		resetgame();
 }
 
+// In this function the actions that occur when pressing the arrow keys are determined: roll cw, roll ccw, move up and move down.
 void processsArrowKeys(int key, int x, int y)
 {
 	switch (key) {
@@ -305,6 +309,7 @@ void processsArrowKeys(int key, int x, int y)
 	}
 }
 
+// Here the actions that occur when the other keys are pressed are determined.
 void processKeys(unsigned char key, int x, int y)
 {
 	switch (key) {
